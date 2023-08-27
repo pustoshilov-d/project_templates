@@ -1,0 +1,19 @@
+#!/bin/sh
+# mamba init
+# mamba activate
+
+## TODO: use pre-commit latter
+## pre-commit run -a
+
+ruff check . --fix --quiet && black . --quiet && {
+    printf "\033[0;32m Ruff checked and formatted && black formatted. COMMITED \033[0m\n"
+    exit 0
+} || {
+    printf "\033[0;31m Error in ruff or black formatting and checking. NOT COMMITED \033[0m\n"
+    exit 1
+}
+
+
+## TODO: needs to be configurated correctly with --exit-zero
+# mypy ./django --pretty
+# echo "mypy checking passed"
